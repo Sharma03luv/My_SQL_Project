@@ -1,0 +1,78 @@
+SELECT * FROM cars.`car dekho`;
+
+-- Total cars: To get a count of total records--
+
+Select count(*)
+From cars.`car dekho`;
+
+-- The manager asked the employee how many cars will be available in 2023? --
+
+Select count(*)
+From cars.`car dekho`
+Where  year = 2023;
+
+-- The manager asked the employees about how many cars are available in 2020, 2021, 2022? --
+
+select count(*)
+From cars.`car dekho`
+where year in (2020, 2021, 2022)
+group by year;
+
+-- The client asked to print the total of all cars by year. I don't see all details --
+
+select year, count(*)
+From cars.`car dekho`
+group by year
+order by year;
+
+-- Client asked the dealer agent about how many diesel cars were in 2020? --
+
+select  fuel, count(*)
+From cars.`car dekho`
+where fuel = 'Diesel' and year = 2020
+group by fuel; #20
+
+-- Client requested a car dealer agent about how many petrol cars were there in 2020?--
+
+select  fuel, count(*)
+From cars.`car dekho`
+where fuel = 'Petrol' and year = 2020; #51
+
+-- Manager asked employee to give a print of all fuel cars, come by all year -- 
+
+select year, count(*)
+From cars.`car dekho`
+where fuel = "Petrol"
+group by year;
+
+select year, count(*)
+From cars.`car dekho`
+where fuel = "Diesel"
+group by year;
+
+select year, count(*)
+From cars.`car dekho`
+where fuel = "CNG"
+group by year;
+
+-- Manager asked in wich year there were more than 100 cars? --
+
+select year, count(*)
+From cars.`car dekho`
+group by year
+having count(*) > 100
+order by count(*) desc;
+
+-- The manager asked employees to count all cars dcount in between 2015 to 2023 --
+
+select count(*) 
+From cars.`car dekho`
+where year between 2015 and 2023; #4124
+
+-- The manager asked employees about all cars details in between year from 2015 to 2023 --
+ 
+ select *
+ From cars.`car dekho`
+ where year between 2015 and 2023;
+ 
+ -- End --
